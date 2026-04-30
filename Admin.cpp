@@ -24,7 +24,7 @@ public:
 		cout << "Enter New Admin Password: ";
 		cin >> newPass;
 		cout << "Set as Manager? (1 for Yes / 0 for No): ";
-    	cin >> newManeger;
+		cin >> newManeger;
 		Admin newAdmin;
 		newAdmin.setUser(newUser);
 		newAdmin.setPass(newPass);
@@ -120,7 +120,7 @@ public:
 		userFile.close();
 	}
 	void deleteAdmin() {
-		
+
 		if(admins.size() <= 1) {
 			cout<<"Number of admins must be 1 aleast!";
 			return;
@@ -176,10 +176,10 @@ public:
 		float newRent;
 		bool duplicate = false;
 
-		if(vehicles.empty()){
+		if(vehicles.empty()) {
 			newID = 1;
 		}
-		else{
+		else {
 			newID = vehicles.back().getID() + 1;
 		}
 
@@ -276,18 +276,18 @@ public:
 			cout << "------------------------------------\n";
 		}
 	}
-	void displayUsers(){
+	void displayUsers() {
 		cout << "\n--- All Registered Users ---\n";
-		for(int i = 0; i < users.size(); i++){
-			cout << "ID: "<<users[i].getID()<<" | Username: "<<users[i].getUsername()<<" | Balance: $"<<users[i].getBalance()<<endl; 
+		for(int i = 0; i < users.size(); i++) {
+			cout << "ID: "<<users[i].getID()<<" | Username: "<<users[i].getUsername()<<" | Balance: $"<<users[i].getBalance()<<endl;
 		}
 	}
-	void deleteUser(){
+	void deleteUser() {
 		int DeleteID;
 		cout<<"Enter User ID to delete: ";
 		cin>>DeleteID;
 		int index=-1;
-		
+
 		for(int i=0; i < users.size(); i++) {
 			if(users[i].getID() == DeleteID) {
 				index = i;
@@ -304,11 +304,11 @@ public:
 		}
 	}
 	bool isManeger() {
-        if (index != -1) {
-            return admins[index].getManeger();
-        }
-        return false;
-    }
+		if (index != -1) {
+			return admins[index].getManeger();
+		}
+		return false;
+	}
 };
 int main() {
 
@@ -317,9 +317,9 @@ int main() {
 	system.loadFromFile();
 
 	if (system.login()) {
-		if(system.isManeger()){
+		if(system.isManeger()) {
 			int choice = 0;
-			
+
 			while (choice != 9) {
 				cout << "\n=== Admin Dashboard ===\n";
 				cout << "1. Display Vehicles\n";
@@ -334,11 +334,11 @@ int main() {
 				cout << "Enter your choice: ";
 				cin >> choice;
 				if (cin.fail()) {
-        	    	cin.clear();
-        	    	cin.ignore(10000, '\n');
-        	    	cout << "Invalid input! Please enter a valid number." << endl;
-        	    continue;
-        		}
+					cin.clear();
+					cin.ignore(10000, '\n');
+					cout << "Invalid input! Please enter a valid number." << endl;
+					continue;
+				}
 				switch (choice) {
 				case 1:
 					system.displayVehicles();
@@ -358,7 +358,7 @@ int main() {
 				case 6:
 					system.deleteAdmin();
 					break;
-				case 7: 
+				case 7:
 					system.displayUsers();
 					break;
 				case 8:
@@ -373,7 +373,7 @@ int main() {
 				}
 			}
 		}
-		else{
+		else {
 			int choice = 0;
 			while (choice != 5) {
 				cout << "\n=== Admin Dashboard ===\n";
@@ -385,17 +385,17 @@ int main() {
 				cout << "Enter your choice: ";
 				cin >> choice;
 				if (cin.fail()) {
-        	    	cin.clear();
-        	    	cin.ignore(10000, '\n');
-        	    	cout << "Invalid input! Please enter a valid number." << endl;
-        	    	continue;
-        		}
+					cin.clear();
+					cin.ignore(10000, '\n');
+					cout << "Invalid input! Please enter a valid number." << endl;
+					continue;
+				}
 				switch (choice) {
 				case 1:
 					system.displayVehicles();
 					break;
 				case 2:
-					system.addVehicle();	
+					system.addVehicle();
 					break;
 				case 3:
 					system.deleteVehicle();
@@ -412,7 +412,7 @@ int main() {
 				}
 			}
 		}
-	} else{
+	} else {
 		cout <<endl << "Access Denied. Exiting program..." <<endl;
 	}
 

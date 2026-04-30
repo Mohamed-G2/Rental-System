@@ -6,7 +6,7 @@ class Admin {
 private:
 	string username;
 	string password;
-    bool maneger;
+	bool maneger;
 public:
 	void setUser(string u) {
 		username = u;
@@ -14,18 +14,18 @@ public:
 	void setPass(string p) {
 		password = p;
 	}
-    void setManeger(bool m) { 
-        maneger = m; 
-    }
+	void setManeger(bool m) {
+		maneger = m;
+	}
 	string getUsername() {
 		return username;
 	}
 	string getPassword() {
 		return password;
 	}
-    bool getManeger() {
-        return maneger; 
-    }
+	bool getManeger() {
+		return maneger;
+	}
 };
 
 class Vehicle {
@@ -49,8 +49,8 @@ public:
 		available = a;
 	}
 	void setDays(int d) {
-        days = d;
-    }
+		days = d;
+	}
 	int getID() {
 		return ID;
 	}
@@ -64,41 +64,41 @@ public:
 		return available;
 	}
 	int getDays() {
-        return days;
-    }
+		return days;
+	}
 
 };
 
-class User{
+class User {
 private:
-    int ID;
-    string name;
-    string password;
-    double balance;
+	int ID;
+	string name;
+	string password;
+	double balance;
 
 public:
-    void setId(int id){
-        ID = id;
-    }
-    void setUser(string u){
+	void setId(int id) {
+		ID = id;
+	}
+	void setUser(string u) {
 		name = u;
 	}
-	void setPass(string p){
+	void setPass(string p) {
 		password = p;
 	}
-    void setBalance(double b){
-        balance = b;
-    }
-    int getID(){
-        return ID;
-    }
-	string getUsername(){
+	void setBalance(double b) {
+		balance = b;
+	}
+	int getID() {
+		return ID;
+	}
+	string getUsername() {
 		return name;
 	}
-	string getPassword(){
+	string getPassword() {
 		return password;
 	}
-    double getBalance(){
-        return balance;
-    }
+	double getBalance() {
+		return balance;
+	}
 };

@@ -35,7 +35,7 @@ private:
 	float rent;
 	bool available;
 	int days = 0;
-	int renter = -1;
+	int renter = 0;
 public:
 	void setID(int id) {
 		ID = id;

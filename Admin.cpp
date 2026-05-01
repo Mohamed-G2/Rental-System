@@ -63,13 +63,15 @@ public:
 			float rent;
 			int availability;
 			int days;
-			while (vehicleFile >> id >> type >> rent >> availability >> days) {
+			int renter;
+			while (vehicleFile >> id >> type >> rent >> availability >> days >> renter) {
 				Vehicle vehicle;
 				vehicle.setID(id);
 				vehicle.setType(type);
 				vehicle.setRent(rent);
 				vehicle.setAvailability(availability);
 				vehicle.setDays(days);
+                vehicle.setRenter(renter);
 				vehicles.push_back(vehicle);
 			}
 			vehicleFile.close();
@@ -107,7 +109,8 @@ public:
 			            << vehicles[i].getType() << " "
 			            << vehicles[i].getRent() << " "
 			            << vehicles[i].getAvailability() << " "
-			            << vehicles[i].getDays() << endl;
+			            << vehicles[i].getDays() << " "
+						<< vehicles[i].getRenter() << endl;
 		}
 		vehicleFile.close();
 		ofstream userFile("users.txt");
@@ -194,6 +197,7 @@ public:
 		newVehicle.setType(newType);
 		newVehicle.setRent(newRent);
 		newVehicle.setAvailability(true);
+		newVehicle.setRenter(0);
 		vehicles.push_back(newVehicle);
 
 		cout<<"Vehicle created successfully with ID: " << newID << "!\n";
@@ -271,7 +275,18 @@ public:
 			cout << "Vehicle ID  : " << vehicles[i].getID() << "\n";
 			cout << "Type        : " << vehicles[i].getType() << "\n";
 			cout << "Rent : " << vehicles[i].getRent() << "\n";
-			cout << "Status      : " << (vehicles[i].getAvailability() ? "Available" : "Rented") << "\n";
+			if (vehicles[i].getAvailability() == true) {
+				cout << "Status      : Available\n";
+			} else {
+				string renterName = "Unknown";
+				for (int j = 0; j < users.size(); j++) {
+					if (users[j].getID() == vehicles[i].getRenter()) {
+						renterName = users[j].getUsername();
+						break;
+					}
+				}
+				cout << "Status      : Rented " << vehicles[i].getDays() << " days by: " << renterName << " (ID: " << vehicles[i].getRenter() << ")\n";
+			}
 
 			cout << "------------------------------------\n";
 		}

@@ -113,14 +113,16 @@ public:
 			float rent;
 			int availability;
 			int days;
+            int renter;
 
-			while (vehicleFile >> id >> type >> rent >> availability >> days) {
+			while (vehicleFile >> id >> type >> rent >> availability >> days >> renter) {
 				Vehicle vehicle;
 				vehicle.setID(id);
 				vehicle.setType(type);
 				vehicle.setRent(rent);
 				vehicle.setAvailability(availability);
 				vehicle.setDays(days);
+                vehicle.setRenter(renter);
 				vehicles.push_back(vehicle);
 			}
 			vehicleFile.close();
@@ -145,7 +147,8 @@ public:
 			            << vehicles[i].getType() << " "
 			            << vehicles[i].getRent() << " "
 			            << vehicles[i].getAvailability() << " "
-			            << vehicles[i].getDays() << endl;
+			            << vehicles[i].getDays() << " "
+                        << vehicles[i].getRenter() << endl;
 		}
 		vehicleFile.close();
 	}
@@ -206,6 +209,7 @@ public:
 
 			vehicles[index].setAvailability(false);
 			vehicles[index].setDays(days);
+            vehicles[index].setRenter(users[currentIndex].getID());
 
 			cout << "Car rented successfully for " << days << " day." << endl;
 			cout << "Total charged: $" << total << endl;
@@ -248,6 +252,11 @@ public:
 			cout << "Car is not rented" << endl;
 			return;
 		}
+        
+        if (vehicles[index].getRenter() != users[currentIndex].getID()) {
+            cout <<endl << "You didn't rent that car!" << endl;
+            return;
+        }
 
 		int used;
 		cout << "Enter days used: ";
@@ -283,6 +292,7 @@ public:
 
 		vehicles[index].setAvailability(true);
 		vehicles[index].setDays(0);
+        vehicles[index].setRenter(0);
 		cout << "New balance: $" << users[currentIndex].getBalance() << endl;
 	}
 

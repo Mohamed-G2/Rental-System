@@ -314,6 +314,13 @@ public:
 			cout<<"User not found"<<endl;
 		}
 		else {
+			for (int i = 0; i < vehicles.size(); i++) {
+                if (vehicles[i].getRenter() == DeleteID) {
+                    vehicles[i].setAvailability(true);
+                    vehicles[i].setDays(0);
+                    vehicles[i].setRenter(0);
+                }
+            }
 			users.erase(users.begin() + index);
 			cout << "User deleted successfully.\n";
 		}
